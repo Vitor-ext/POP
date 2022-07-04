@@ -1,4 +1,13 @@
 from Conexao import serialApp
+import socket
+
+host = "127.0.0.1"  #Server address IPV4 da maquina na rede
+port = 1235 #Port of Server
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((host, port)) #bind server
+s.listen(100)
+print('Aguardando conexão')
 
 # Objeto para SerialApp
 app = serialApp()
@@ -10,27 +19,23 @@ app.updatePort()
 app.connectSerial()
 
 # Recebe Buffer do Serial
-contador = 0
-while(1):
+
+while True:
     app.readSerial()
-    if(contador>=10): break
-    contador +=1
+
+### Aplicação Ficara no NUC, Atentar a questão de server client / levantar um servidor com host e porta ###
+    conn, addr = s.accept()
+    dados = (str.encode('Enviando dados para o abastece'))
+    conn.sendall(dados)
+    valor = conn.recv(1)
+    print(valor.decode())
+    teste  = int (valor.decode())
+
+
+
 
 # Fechando a Conexão
 app.closeSerial()
 
+print('Conexão Fechada')
 
-     #ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
-     #while True:
-     #    if state == "0":
-     #     print "OK - Sem Alertas"
-     #     sys.exit(0)
-     #   elif (str(ser.read()) == '2'):
-     #     print "WARNING "
-     #    sys.exit(1)
-     #   elif (str(ser.read()) == '1'):
-     #     print "CRITICAL - Intrusos Detectados"
-     #     sys.exit(2)
-     #   else:
-     #     print "UKNOWN - Parametro Desconhecido"
-     #     sys.exit(3)

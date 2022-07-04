@@ -19,6 +19,10 @@ class serialApp ():
             self.serialPort.write(dadoSend.enconde())
             self.seralPort.flushOutput()
 
+    def readSerial(self):
+        dataRead = self.serialPort.read().decode
+        print(dataRead)
+
     def closeSerial(self):
         self.serialPort.close()
 
