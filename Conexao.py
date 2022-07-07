@@ -26,3 +26,4 @@ class serialApp ():
     def closeSerial(self):
         self.serialPort.close()
 
+    return def __init__
