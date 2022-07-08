@@ -8,7 +8,7 @@ port = 1235 #Port of Server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port)) #bind server
 s.listen(100)
-print('Aguardando conexão')
+print('Webserver Ativo')
 
 # Objeto para SerialApp
 app = serialApp()
