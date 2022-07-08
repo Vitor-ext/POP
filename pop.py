@@ -1,6 +1,6 @@
+from Conexao import serialApp
 import xml.etree.cElementTree as ET
 import socket
-from Conexao import serialApp
 
 host = "127.0.0.1"  #Server address IPV4 da maquina na rede
 port = 1235 #Port of Server
@@ -11,18 +11,20 @@ s.listen(100)
 print('Webserver Ativo')
 
 # Objeto para SerialApp
-app = serialApp()
+ser = serialApp()
 
+print('Atribuindo uma Classe')
 # Atualiza as portas do dispositivo
-app.updatePort()
+ser.updatePort()
+print('Atualizando Portas')
 
 # Conexão
-app.connectSerial()
+##app.connectSerial()
 
 # Recebe Buffer do Serial
 
-while True:
-    app.readSerial()
+##while True:
+ ##   app.readSerial()
 
 ### Aplicação Ficara no NUC, Atentar a questão de server client / levantar um servidor com host e porta ###
   #  conn, addr = s.accept()
