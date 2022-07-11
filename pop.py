@@ -1,7 +1,8 @@
 from Conexao import serialApp
-import xml.etree.cElementTree as ET
+import json
 import socket
 import time
+
 
 host = "127.0.0.1"  #Server address IPV4 da maquina na rede
 port = 1235 #Port of Server
@@ -24,20 +25,18 @@ ser.connectSerial()
 #Recebe Buffer do Serial
 
 while True:
-  #ser.readSerial()
-   conn, addr = s.accept()
-   dados = (str.encode('Enviando dados para o abastece'))
-   conn.sendall(dados)
-   print('Webserver Ativo')
-   time.sleep(60)
+    with open("status.json", encoding='utf-8') as status:     # Teste com Json
+        dados = json.load(status)
+    for i in dados:
+        valor = (i['I0'])
+        print(valor)
+        print('Webserver Ativo')
+        time.sleep(10)
+
+
+
 
 ### Aplicação Ficara no NUC, Atentar a questão de server client / levantar um servidor com host e porta ###
-
-  #dados = (str.encode('Enviando dados para o abastece'))
-  #conn.sendall(dados)
-  #valor = conn.recv(1)
-  #print(valor.decode())
-  #  teste  = int (valor.decode())
 
 
 # Fechando a Conexão
