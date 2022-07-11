@@ -1,4 +1,5 @@
 from Conexao import serialApp
+from flask import Flask
 import json
 import socket
 import time
@@ -28,10 +29,16 @@ while True:
     with open("status.json", encoding='utf-8') as status:     # Teste com Json
         dados = json.load(status)
     for i in dados:
-        valor = (i['I0'])
-        print(valor)
-        print('Webserver Ativo')
-        time.sleep(10)
+        I0 = (i['I0'])
+        I1 = (i['I1'])
+        O0 = (i['O0'])
+        O1 = (i['O1'])
+        print(" Valor da Variavel IO", I0, "\n",
+              "Valor da Variavel I1", I1, "\n",
+              "Valor da Variavel O0", O0,"\n",
+              "Valor da Variavel O1", O1)
+        print('Webserver Ativo em 127.0.0.1:1235')
+        time.sleep(2)
 
 
 
