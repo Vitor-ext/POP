@@ -1,6 +1,7 @@
 from Conexao import serialApp
 import xml.etree.cElementTree as ET
 import socket
+import time
 
 host = "127.0.0.1"  #Server address IPV4 da maquina na rede
 port = 1235 #Port of Server
@@ -13,34 +14,33 @@ print('Webserver Ativo')
 # Objeto para SerialApp
 ser = serialApp()
 
-print('Atribuindo uma Classe')
 # Atualiza as portas do dispositivo
 ser.updatePort()
 print('Atualizando Portas')
 
 # Conexão
-##app.connectSerial()
+ser.connectSerial()
 
-# Recebe Buffer do Serial
+#Recebe Buffer do Serial
 
-##while True:
- ##   app.readSerial()
+while True:
+  #ser.readSerial()
+   conn, addr = s.accept()
+   dados = (str.encode('Enviando dados para o abastece'))
+   conn.sendall(dados)
+   print('Webserver Ativo')
+   time.sleep(60)
 
 ### Aplicação Ficara no NUC, Atentar a questão de server client / levantar um servidor com host e porta ###
-  #  conn, addr = s.accept()
-  #  dados = (str.encode('Enviando dados para o abastece'))
-  #  conn.sendall(dados)
-  #  valor = conn.recv(1)
-  #  print(valor.decode())
+
+  #dados = (str.encode('Enviando dados para o abastece'))
+  #conn.sendall(dados)
+  #valor = conn.recv(1)
+  #print(valor.decode())
   #  teste  = int (valor.decode())
-
-
 
 
 # Fechando a Conexão
 #app.closeSerial()
-
-print('Parei Aqui')
-
 #print('Conexão Fechada')
 
