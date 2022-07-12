@@ -20,6 +20,10 @@ ser = serialApp()
 ser.updatePort()
 print('Atualizando Portas')
 
+#Definindo Portas COM
+ser.serialPort.port = 'COM3'
+ser.serialPort.baudrate = 9600
+
 # Conexão
 ser.connectSerial()
 
@@ -38,7 +42,7 @@ while True:
               "Valor da Variavel O0", O0,"\n",
               "Valor da Variavel O1", O1)
         print('Webserver Ativo em 127.0.0.1:1235')
-        time.sleep(2)
+        time.sleep(0.5)
 
 
 
