@@ -1,24 +1,22 @@
 from Conexao import serialApp
+#from usb import USB
 from flask import Flask
 import json
-import socket
 import time
 
 
+##################  Construção do Servidor   ####################
 host = "127.0.0.1"  #Server address IPV4 da maquina na rede
 port = 1235 #Port of Server
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((host, port)) #bind server
-s.listen(100)
-print('Webserver Ativo')
 
+##################  Caso Queira Utilizar a Porta Serial   ####################
 # Objeto para SerialApp
 ser = serialApp()
 
 # Atualiza as portas do dispositivo
 ser.updatePort()
-print('Atualizando Portas')
+print('Atualizando Portas Seriais')
 
 #Definindo Portas COM
 ser.serialPort.port = 'COM3'
@@ -27,7 +25,12 @@ ser.serialPort.baudrate = 9600
 # Conexão
 ser.connectSerial()
 
-#Recebe Buffer do Serial
+# Necessário incluir inserção do buffer
+
+
+##################  Caso Queira Utilizar a Porta Serial   ####################
+
+#usb= USB()
 
 while True:
     with open("status.json", encoding='utf-8') as status:     # Teste com Json
@@ -42,7 +45,7 @@ while True:
               "Valor da Variavel O0", O0,"\n",
               "Valor da Variavel O1", O1)
         print('Webserver Ativo em 127.0.0.1:1235')
-        time.sleep(0.5)
+        time.sleep(3)
 
 
 
