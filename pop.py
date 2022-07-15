@@ -15,17 +15,15 @@ port = 1235 #Port of Server
 ser = serialApp()
 
 # Atualiza as portas do dispositivo
-ser.updatePort()
-print('Atualizando Portas Seriais')
+##ser.updatePort()
+##print('Atualizando Portas Seriais')
 
 #Definindo Portas COM
-ser.serialPort.port = 'COM3'
-ser.serialPort.baudrate = 9600
+##ser.serialPort.port = 'COM3'
+##ser.serialPort.baudrate = 9600
 
 # Conexão
-ser.connectSerial()
-
-# Necessário incluir inserção do buffer
+##ser.connectSerial()
 
 
 ##################  Caso Queira Utilizar a Porta Serial   ####################
