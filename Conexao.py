@@ -1,7 +1,7 @@
 import serial
 import serial.tools.list_ports
 
-class serialApp ():
+class Conexao ():
     def __init__(self):
         self.serialPort = serial.Serial()
         self.baudrate = [9600, 115200]
