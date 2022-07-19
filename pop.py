@@ -28,7 +28,7 @@ Usb = Usb()
 # Conexão
 ##ser.connectSerial()
 
-
+# Seguir com o xml iniciar avanços
 while True:
     with open("status.json", encoding='utf-8') as status:     # Teste com Json
         dados = json.load(status)
