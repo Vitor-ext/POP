@@ -2,6 +2,7 @@ from Conexao import Conexao
 from Usb import Usb
 from flask import Flask
 import json
+import xml.etree.ElementTree as xml
 import time
 
 ##################  Construção do Servidor   ####################
@@ -30,8 +31,8 @@ Usb = Usb()
 
 # Seguir com o xml iniciar avanços
 while True:
-    with open("status.json", encoding='utf-8') as status:     # Teste com Json
-        dados = json.load(status)
+    with open("status.xml", encoding='utf-8') as status:     # Teste com Xml
+        dados = xml.parse(status)
     for i in dados:
         I0 = (i['I0'])
         I1 = (i['I1'])

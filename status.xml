@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Status>
-    <Var>
-       <I0>1</I0>
-       <I1>0</I1>
-       <O0>1</O0>
-       <O1>1</O1>
-    </Var>
+    <I0>1</I0>
+    <I1>0</I1>
+    <O0>1</O0>
+    <O1>1</O1>
 </Status>
