@@ -8,7 +8,7 @@ class Log ():
 
     logging.basicConfig(filename = "bot.log",
                         filemode = "a",
-                        format = Log_Format,
-                        level = logging.ERROR)
+                        format =Log_Format,
+                        level = logging.INFO)
 
     logger = logging.getLogger()

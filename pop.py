@@ -4,52 +4,55 @@ from Log import Log
 from flask import Flask
 import json
 import xml.etree.ElementTree as xml
+from xmlrpc.server import SimpleXMLRPCServer
 import time
 
-
+class pop ():
 ##################  Construção do Servidor   ####################
-host = "127.0.0.1"  #Server address IPV4 da maquina na rede
-port = 1235 #Port of Server
+#    host ="127.0.0.1"  #Server address IPV4 da maquina na rede
+#    port = 1235 #Port of Server
 
 
 ##################  Caso Queira Utilizar a Porta Serial   ####################
 # Objeto para SerialApp
-Con = Conexao()
+    Con = Conexao()
 
 ##################  Instanciando USB   ####################
 # Objeto para Usb
-Usb = Usb()
+    Usb = Usb()
 
 ##################  Instanciando Log   ####################
 # Objeto para Usb
-Log = Log()
+    Log = Log()
 
-# Atualiza as portas do dispositivo
-##ser.updatePort()
-##print('Atualizando Portas Seriais')
+##################  Registrando no Log Inicio    ####################
+    Log.logger.info("Servço Iniciado")
 
-#Definindo Portas COM
-##ser.serialPort.port = 'COM3'
-##ser.serialPort.baudrate = 9600
 
-# Conexão
-##ser.connectSerial()
+
 
 # Seguir com o xml iniciar avanços
-while True:
-    status = "status.xml"
+    while True:
+        status = "status.xml"
     dados = xml.parse(status)
     root = dados.getroot()
     filtro = "*"
     #print(root.iter.child.text)
     for child in root.iter(filtro):
         print(child.tag, child.text)
-    #    time.sleep(0.5)
+        Log.logger.info(child.tag and child.text)
+        #Log.logger.debug(child.text)
+    time.sleep(1)
+
+
+server = SimpleXMLRPCServer(("localhost", 1235))
+server.register_function(pop, "pop")
+server.serve_forever()
 
 ##################  Salvando Log para Consulta    ####################
 
-    Log.logger.error("Servço Iniciado")
-    Log.logger.error("status.xml")
+   # Log.logger.info("Servço Iniciado")
+   # Log.logger.error(child.text)
 
 
 
