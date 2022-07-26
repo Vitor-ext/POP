@@ -7,11 +7,13 @@ backend = usb.backend.libusb1.get_backend(find_library=lambda x: "C:\Windows\Sys
 class Usb ():
     pass
 
-VID = 0x1004
-PID = 0x0040
+VID = 0x275d
+PID = 0x0Ba6
 
 # Comunicação USB
-dev = list(usb.core.find(find_all=True, backend=backend))    # Comando no Linux - Lsusb       # Comando no Windows  - devmgmt.msc
+#dev = list(usb.core.find(find_all=True, backend=backend))    # Comando no Linux - Lsusb       # Comando no Windows  - devmgmt.msc
+dev = usb.core.find(Idvendor=VID, Idproduct=PID, backend=backend)
+#dev = usb.core.find(find_all=True, backend=backend)  # Encontra todos os dispositivos
 print(dev)
 
 # Verifica se tem algum dispositivo
