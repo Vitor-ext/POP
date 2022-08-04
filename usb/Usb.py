@@ -1,3 +1,4 @@
+# coding=utf-8
 import usb.core
 import usb.util as util
 import usb.backend.libusb1
@@ -7,12 +8,13 @@ backend = usb.backend.libusb1.get_backend(find_library=lambda x: "C:\Windows\Sys
 class Usb ():
     pass
 
-VID = 0x275d
-PID = 0x0Ba6
+VID = 0x275d                # Codigo do fornecedor, tentar fazer a comunicação somente com ele.
+#PID = 0x0Ba6
 
-# Comunicação USB
+
+#Comunicação USB
 #dev = list(usb.core.find(find_all=True, backend=backend))    # Comando no Linux - Lsusb       # Comando no Windows  - devmgmt.msc
-dev = usb.core.find(Idvendor=VID, Idproduct=PID, backend=backend)
+dev = usb.core.find(IdVendor=VID, backend=backend)
 #dev = usb.core.find(find_all=True, backend=backend)  # Encontra todos os dispositivos
 print(dev)
 
@@ -40,6 +42,8 @@ else:
 
 
     ### Escrita na ESP32 - Modo Teste ###
+
+#Postar o xml
 
     ep.write('test')
 
