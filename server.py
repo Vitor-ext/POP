@@ -9,10 +9,10 @@ def index():
     return render_template('geral.html', dados=dados)
 
 
-@app.route('/status_xml')
+@app.route('/status.xml')
 def xml():
     xml = {"I0": "0", "I1": "0", "O0": "0", "O1": "0"}
-    return render_template('xml.html', xml=xml)
+    return render_template('/status.xml', xml=xml)
 
 
 ###### Para Desenvolvimento #########

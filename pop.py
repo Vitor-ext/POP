@@ -27,7 +27,8 @@ class pop ():
 
 # Seguir com o xml iniciar avanços
 while True:
-    status = "status.xml"
+    # print (Usb.con())
+    status = "templates/status.xml"
     dados = xml.parse(status)
     root = dados.getroot()
     filtro = "*"
@@ -40,5 +41,5 @@ while True:
 
 ##################  Salvando Log para Consulta    ####################
 
-   # Log.logger.info("Servço Iniciado")
+   # Log.logger.info("Serviço Iniciado")
    # Log.logger.error(child.text)
